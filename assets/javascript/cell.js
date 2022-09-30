@@ -1,12 +1,18 @@
 class Cell {
-    id;
     color;
-    constructor(id, color = ''){
-        this.id = id;
+    isSelected;
+    constructor(color = ''){
         this.color = color;
+        this.isSelected = false;
+    }
+    selectCell(){
+        this.isSelected = true;
+    }
+    desselectCell(){
+        this.isSelected = false;
     }
     setColor(color){
-        //color must be a hex value representing the color of the cell
+        //color must be a string (hex value) representing the color of the cell ex: "ffffff"
         this.color = color;
     }
     clearColor(){

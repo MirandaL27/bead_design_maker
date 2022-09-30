@@ -23,4 +23,11 @@ class Color{
     deselectColor(){
         this.selectedColor = '';
     }
+    getColorListFromGrid(grid){
+        for(let i=0;i<grid.cells.length;i++){
+            if(!this.colorList.includes(grid.cells[i].color)){
+                this.addColorToList(grid.cells[i].color);
+            }
+        }
+    }
 }

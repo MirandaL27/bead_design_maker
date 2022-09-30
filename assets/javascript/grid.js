@@ -17,15 +17,14 @@ class Grid{
     }
     generateBlankGrid(){
         for(let i=0;i<this.rows*this.cols;i++){
-            this.cells.push(new Cell(i));
+            this.cells.push(new Cell());
         }
     }
     loadExistingGrid(gridToLoad){
         //stub. need to add implementation later.
     }
     colorCell(id, color){
-        let cell = this.cells.find(element => element.id === id);
-        cell.color = color;
+        this.cells[id].color = color;
     }
     setSelectedCells(cells){
         //cells needs to be an array of cell ids.
@@ -36,8 +35,7 @@ class Grid{
     }
     clearSelectedCells(){
         for(let i=0;i<this.selectedCells.length;i++){
-            let cell = this.cells.find(element => element.id === this.selectedCells[i]);
-            cell.color = '';
+            this.cells[this.selectedCells[i]].color = '';
         }
     }
     clearAllCellsWithColors(colors){
@@ -52,8 +50,46 @@ class Grid{
             }
         }
     }
+    fillAllUnfilledCells(color){
+        for(let i=0;i<this.cells.length;i++){
+            if(this.cells[i].color === ''){
+                this.cells[i].color = color;
+            }
+        }
+    }
     resetGrid(){
         this.cells = [];
         this.generateBlankGrid();
+    }
+    addCellsToTopOfGrid(numberOfRowsToAdd){
+        this.rows += numberOfRowsToAdd;
+        for(let i=0;i<numberOfRowsToAdd*cols;i++){
+            this.cells.unshift(new Cell());
+        }
+    }
+    addCellsBottomOfGrid(numberOfRowsToAdd){
+        this.rows += numberOfRowsToAdd;
+        for(let i=0;i<numberOfRowsToAdd*cols;i++){
+            this.cells.push(new Cell());
+        }
+    }
+    addCellsToLeftSideOfGrid(numberOfColumnsToAdd){
+        let ending = (this.cols+numberOfColumnsToAdd-1) * this.rows;
+        let added = 0;
+        for(let i = 0; i <= ending; i += this.cols){
+            this.cells.splice(i+added,0,new Cell());
+            added++;
+        }
+        this.cols += numberOfColumnsToAdd;
+    }
+    addCellsToRightSideOfGrid(numberOfColumnsToAdd){
+        //given 12 x 12 grid - add new cells at index 12, 24+1, 36+2, 48+3 etc.
+        let ending = (this.cols+numberOfColumnsToAdd) * this.rows;
+        let added = 0;
+        for(let i = this.cols; i <= ending; i += this.cols){
+            this.cells.splice(i+added,0,new Cell());
+            added++;
+        }
+        this.cols += numberOfColumnsToAdd;
     }
 }
