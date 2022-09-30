@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css"/>
     <title>bead_design_maker</title>
 </head>
 <body>
@@ -24,7 +25,7 @@
             <input type="number" id="rows" name="rows" class="rows" min="1" max="100">
             <label for="cols">Number of Columns: </label>
             <input type="number" id="cols" name="cols" class="cols" min="1" max="100">  
-            <button type="submit">Generate Bead Grid</button>
+            <button type="submit" onclick="handleGenerateGrid(event)">Generate Bead Grid</button>
         </form>
     </section>
     <!--Colors-->
@@ -66,5 +67,8 @@
     <script src="./assets/javascript/cell.js"></script>
     <script src="./assets/javascript/grid.js"></script>
     <script src="./assets/javascript/color.js"></script>
+    <script src="./assets/javascript/gridDisplay.js"></script>
+    <script src="./assets/javascript/gridForm.js"></script>
+    <script src = "./assets/javascript/state.js"></script>
 </body>
 </html>
