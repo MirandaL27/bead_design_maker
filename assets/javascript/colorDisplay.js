@@ -8,15 +8,26 @@ function displayColorList(colorList) {
     }
     for (let i = 0; i < colorList.length; i++) {
         //need to display the color, and a button for deleting the color for each color in the color list.
-        let pEl = document.createElement("p");
-        let spanEl = document.createElement("span");
-        spanEl.className = `w3-badge color_${i}`;
-        spanEl.textContent = `#${colorList[i]}`;
-        spanEl.style.backgroundColor = `#${colorList[i]}`
-        pEl.appendChild(spanEl);
+        let divEl = document.createElement("div");
+        divEl.style.padding = "20px";
+        let divEl2 = document.createElement("div");
+        divEl2.className = `color_${i} w3-round-large`;
+        divEl2.textContent = `#${colorList[i]} `;
+        divEl2.style.backgroundColor = `#${colorList[i]}`
+        divEl2.style.display = "inline";
+        divEl2.style.padding = "16px";
+        divEl.appendChild(divEl2);
         let buttonEl = document.createElement("button");
-        buttonEl.className = `delete_color_${i} fa fa-trash`;
-        pEl.appendChild(buttonEl);
-        colorListEl.appendChild(pEl);
+        buttonEl.className = `fa fa-trash w3-round-large`;
+        buttonEl.id = `delete_color_${i}`;
+        buttonEl.onclick = (event => handleDeleteColor(event));
+        buttonEl.style.margin = "0px 16px";
+        divEl2.appendChild(buttonEl);
+        let checkEl = document.createElement("input");
+        checkEl.type = "checkbox";
+        checkEl.className = `select_color_${i}`
+        checkEl.onclick = (event => handleColorSelect(event));
+        divEl2.appendChild(checkEl); 
+        colorListEl.appendChild(divEl);
     }
 }
