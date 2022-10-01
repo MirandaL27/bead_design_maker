@@ -19,7 +19,7 @@ class Cell {
         this.color = '';
     }
     getColor(){
-        if(color === ''){
+        if(this.color === ''){
             return '';
         }
         return `#${this.color}`;

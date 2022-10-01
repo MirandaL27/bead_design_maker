@@ -26,13 +26,21 @@ function handleClearColors(){
 }
 
 function handleColorSelect(event){
-    let index = event.target.className.replace("select_color_","");
-    state.color.selectColorWithIndex(index);
-    //deselect the other colors - uncheck them
-    for(let i=0;i<state.color.colorList.length;i++){
-        if(state.color.colorList[i] !== state.color.selectedColor){
-            let checkEl = document.querySelector(`.select_color_${i}`);
-            checkEl.checked = false;
+    console.log(event.target.checked);
+    if(!event.target.checked){
+        //we're deselecting a color
+        state.color.deselectColor();
+    }
+    else{
+        //we're selecting a color
+        let index = event.target.className.replace("select_color_","");
+        state.color.selectColorWithIndex(index);
+        //deselect the other colors - uncheck them
+        for(let i=0;i<state.color.colorList.length;i++){
+            if(state.color.colorList[i] !== state.color.selectedColor){
+                let checkEl = document.querySelector(`.select_color_${i}`);
+                checkEl.checked = false;
+            }
         }
     }
 }
