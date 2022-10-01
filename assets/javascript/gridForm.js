@@ -7,6 +7,6 @@ function handleGenerateGrid(event){
     event.preventDefault();
     let rows = rowFormEl.value;
     let cols = colFormEl.value;
-    state.initializeVariables(rows, cols);
+    state.initializeGrid(rows, cols);
     displayGrid(state.grid);
 }

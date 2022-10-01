@@ -3,9 +3,13 @@
 let state = {
     grid: '',
     color: '',
-    initializeVariables(rows, cols){
-        this.grid = new Grid(rows, cols);
+    initializeColor(){
         this.color = new Color();
+    },
+    initializeGrid(rows, cols){
+        this.grid = new Grid(rows, cols);
     }
 
 }
+
+state.initializeColor();
