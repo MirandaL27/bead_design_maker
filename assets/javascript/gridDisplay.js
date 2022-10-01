@@ -10,9 +10,7 @@ function displayGrid(grid){
     gridContainerEl.style.width = `${width}%`;
     gridContainerEl.style.height = `${height}px`;
     //get rid of old grid first
-    while (gridContainerEl.firstChild) {
-        gridContainerEl.removeChild(gridContainerEl.lastChild);
-      }
+    deleteOldGrid();
     for(let i=0;i<grid.cells.length;i++){
         //generate new grid html element for each cell in the grid object
         let newDiv = document.createElement("div");
@@ -23,5 +21,11 @@ function displayGrid(grid){
         //let paddingVert = (1/grid.cols)*200;
         newDiv.style.padding = `auto`;
         gridContainerEl.appendChild(newDiv);
+    }
+}
+
+function deleteOldGrid(){
+    while (gridContainerEl.firstChild) {
+        gridContainerEl.removeChild(gridContainerEl.lastChild);
     }
 }
