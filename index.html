@@ -64,7 +64,7 @@
     <section>
         <button>Print Design</button>
         <button>Show By Row</button>
-        <button onClick="handleExportDesign()">Export Design</button>
+        <button onclick="document.getElementById('id02').style.display='block'">Export Design</button>
         <button onclick="handleClearGrid()">Clear Grid</button>
         <button>Delete Grid</button>
     </section>
@@ -84,6 +84,30 @@
                     </div>
                     <div class="w3-padding-16">
                         <button class="w3-button w3-black w3-round-large w3-hover-teal addColor" onclick="handleAddColor()">Add Color</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="w3-container">
+        <div id="id02" class="w3-modal">
+            <div class="w3-modal-content w3-animate-top w3-card-4">
+                <header class="w3-container w3-teal">
+                    <span onclick="closeDownloadModal()"
+                        class="w3-button w3-display-topright">&times;</span>
+                    <h2>Download Design</h2>
+                </header>
+                <div class="w3-container">
+                    <div class="w3-padding-16">
+                        <label for="filename">Filename: </label>
+                        <input type="text" id="filename" name="filename" class="filename">
+                    </div>
+                    <div class="w3-padding-16">
+                        <button class="w3-button w3-black w3-round-large w3-hover-teal addColor" onclick="handleExportDesign()">Create Download Link</button>
+                    </div>
+                    <div class="downloadLinkContainer w3-padding-16">
+        
                     </div>
                 </div>
             </div>
