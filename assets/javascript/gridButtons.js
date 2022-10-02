@@ -112,7 +112,7 @@ function goToPreviousRow(){
 
 function displayRow(rowNum){
     let pEl = document.querySelector(".rowStats");
-    pEl.textContent = `Now showing row ${rowNum + 1} out of ${state.grid.cells.length/state.grid.rows}`;
+    pEl.textContent = `Now showing row ${rowNum + 1} out of ${state.grid.cells.length/state.grid.cols}`;
     //need to display the row with the beads grouped by color;
     let rowEl = document.querySelector(".beadRow");
     while (rowEl.firstChild) {
@@ -122,8 +122,10 @@ function displayRow(rowNum){
         let newDivEl = document.createElement("div");
         let color =  state.grid.cells[i + rowNum*state.grid.cols].getColor();
         newDivEl.style.color = "white";
+        newDivEl.style.backgroundColor = "white";
         if(color !== ""){
             newDivEl.style.color = color;
+            newDivEl.style.backgroundColor = color;
         }
         newDivEl.innerHTML = '&#9632;';
         newDivEl.style.border = "1px solid black";

@@ -20,4 +20,5 @@
   }
 .beadRow{
   display: flex;
+  flex-wrap: wrap;
 }
