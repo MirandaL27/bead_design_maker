@@ -96,4 +96,39 @@ function deleteDownloadLink(){
     }
 }
 
+function handleShowByRow(){
+    document.getElementById('id03').style.display='block';
+    displayRow(state.currentRow);
+}
+
+function goToNextRow(){
+    state.currentRow++;
+    displayRow(state.currentRow);
+}
+function goToPreviousRow(){
+    state.currentRow--;
+    displayRow(state.currentRow);
+}
+
+function displayRow(rowNum){
+    let pEl = document.querySelector(".rowStats");
+    pEl.textContent = `Now showing row ${rowNum + 1} out of ${state.grid.cells.length/state.grid.rows}`;
+    //need to display the row with the beads grouped by color;
+    let rowEl = document.querySelector(".beadRow");
+    while (rowEl.firstChild) {
+        rowEl.removeChild(rowEl.lastChild);
+    }
+    for(let i = 0; i < state.grid.cols; i++){
+        let newDivEl = document.createElement("div");
+        let color =  state.grid.cells[i + rowNum*state.grid.cols].getColor();
+        newDivEl.style.color = "white";
+        if(color !== ""){
+            newDivEl.style.color = color;
+        }
+        newDivEl.innerHTML = '&#9632;';
+        newDivEl.style.border = "1px solid black";
+        rowEl.appendChild(newDivEl);       
+    }
+}
+
 bodyEl.addEventListener("click", handleGridEvents);

@@ -3,6 +3,7 @@
 let state = {
     grid: '',
     color: '',
+    currentRow: 0,
     initializeColor(){
         this.color = new Color();
     },
