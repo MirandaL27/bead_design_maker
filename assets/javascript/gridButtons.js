@@ -17,7 +17,12 @@ function handleClearGrid() {
 }
 
 function handleDeleteGrid() {
-    //state.grid
+    deleteOldGrid();
+    state.grid.deleteGrid();
+    let rowFormEl = document.querySelector(".rows");
+    let colFormEl = document.querySelector(".cols");
+    rowFormEl.value = "";
+    colFormEl.value = "";
 }
 function handleExportDesign() {
     if (state.grid !== "") {
@@ -66,7 +71,6 @@ function handleExportDesign() {
         ctx.putImageData(idata, 0, 0);
 
         let dataUri = canvas.toDataURL();
-        //console.log(dataUri);
         createDownloadlink(dataUri, name)
     }
 }

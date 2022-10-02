@@ -59,8 +59,11 @@ class Grid{
         }
     }
     resetGrid(){
-        this.cells = [];
+        this.deleteGrid();
         this.generateBlankGrid();
+    }
+    deleteGrid(){
+        this.cells = [];
     }
     addCellsToTopOfGrid(numberOfRowsToAdd){
         this.rows += numberOfRowsToAdd;
